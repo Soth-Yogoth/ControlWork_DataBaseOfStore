@@ -1,0 +1,62 @@
+﻿<Window x:Class="ControlWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControlWork"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TreeView Name="treeView" Grid.Row="1" SelectedItemChanged="SelectedItemChanged">
+
+            <TreeViewItem Name="All"  Header="Все товары"/>
+            <TreeViewItem Header="Смартфоны"/>
+            <TreeViewItem Header="Планшеты"/>
+            <TreeViewItem Header="Смарт-часы"/>
+            <TreeViewItem Header="Наушники">
+                <TreeViewItem Header="Беспроводные наушники"/>
+                <TreeViewItem Header="Проводные наушники"/>
+            </TreeViewItem>
+        </TreeView>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Добавить" Click="Add"/>
+            <Button Name="editButton" Content="Сохранить изменения" Click="Edit" Margin="0,10,0,10"/>
+            <Button Content="Удалить" Click="Delete"/>
+        </StackPanel>
+
+        <DataGrid Name="dataGrid" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False">
+            <DataGrid.Columns>  
+                <DataGridTextColumn Header="Штрихкод" Binding="{Binding barcode}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding title}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding price}"/>
+
+                <DataGridTextColumn Header="Операционная система" Binding="{Binding OS}"/>
+                <DataGridTextColumn Header="RAM" Binding="{Binding RAM}"/>
+                <DataGridTextColumn Header="ROM" Binding="{Binding ROM}"/>
+                <DataGridTextColumn Header="Разрешение камеры" Binding="{Binding camera}"/>
+                <DataGridTextColumn Header="Диагональ экрана" Binding="{Binding screenDiagonal}"/>
+                <DataGridCheckBoxColumn Header="Сотовая связь" Binding="{Binding cellular}"/>
+
+                <DataGridCheckBoxColumn Header="Измерение пульса" Binding="{Binding pulseTracking}"/>
+                <DataGridCheckBoxColumn Header="Счётчик шагов" Binding="{Binding fitnessTracking}"/>
+                <DataGridCheckBoxColumn Header="Будильник" Binding="{Binding alarm}"/>
+                <DataGridTextColumn Header="Часов без подзарядки" Binding="{Binding timeWithoutCharging}"/>
+
+                <DataGridTextColumn Header="Версия Блютуз" Binding="{Binding bluetoothVersion}"/>
+                <DataGridCheckBoxColumn Header="Микрофон" Binding="{Binding microphone}"/>
+                <DataGridTextColumn Header="Чувствительность" Binding="{Binding sensitivity}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
